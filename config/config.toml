@@ -1,0 +1,30 @@
+[server]
+serverEnv = "inline"
+port = 8080
+debug = false
+
+[mysql]
+host = "127.0.0.1"
+port = 3306
+user = "xiaolin"
+password = ""
+dbName = ""
+charset = "utf8mb4"
+pool = 100
+
+[redis]
+host = ""
+port = 6706
+password = ""
+dbName = 0
+pool = 20
+
+[mongo]
+host = ""
+user = ""
+port = 27017
+password = ""
+pool = 20
+
+[file]
+path = "static/file/"

@@ -54,7 +54,7 @@ func newInstance(driver Driver) interface{} {
 	var r interface{}
 	switch driver {
 	case REDIS:
-		r, _ = s.getOrSetMap(REDIS, newRidis())
+		r, _ = s.getOrSetMap(REDIS, newRedis())
 	case MYSQL:
 		r, _ = s.getOrSetMap(MYSQL, newMysql())
 	case MGO:
@@ -69,7 +69,7 @@ func getInstance() *singleton {
 		once.Do(func() {
 			instance = &singleton{services: &sync.Map{}}
 		})
-		instance.getOrSetMap(REDIS, newRidis())
+		instance.getOrSetMap(REDIS, newRedis())
 	}
 	return instance
 }
@@ -78,7 +78,7 @@ func (s *singleton) getOrSetMap(name Driver, service interface{}) (interface{}, 
 	return s.services.LoadOrStore(name, service)
 }
 
-func newRidis() *redis.Client {
+func newRedis() *redis.Client {
 	client := redis.NewClient(&redis.Options{
 		Addr:     fmt.Sprintf("%s:%d", conf.Redis.Host, conf.Redis.Port),
 		Password: conf.Redis.Password,

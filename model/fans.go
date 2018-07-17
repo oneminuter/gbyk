@@ -2,6 +2,7 @@ package model
 
 import (
 	"time"
+
 	_ "github.com/jinzhu/gorm"
 )
 
@@ -11,7 +12,7 @@ type Fans struct {
 	CreatedAt time.Time  `json:"-"`
 	UpdatedAt time.Time  `json:"-"`
 	DeletedAt *time.Time `json:"-"`
-	
-	UserId int64 `json:"userId"`
+
+	UserId     int64 `json:"userId"`
 	FansUserId int64 `json:"fansUserId"`
 }
